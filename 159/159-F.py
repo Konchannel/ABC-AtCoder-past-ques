@@ -20,17 +20,28 @@ improvement:
 """
 
 # === tried-01 ===
+import itertools
+
 n, s = map(int, input().split())
 aaas = list(map(int, input().split()))
-ans_total = 0
+sum_s_list = []
+
+for i in range(1, n+1):
+    for j in itertools.combinations(aaas, i):
+        if sum(j) == s:
+            print(j)
+'''
 
 for i in range(n):
     for j in range(1, n-i):
         if aaas[i] + aaas[i+j] == s:
             # 何回使われるかの計算
             # print(i, aaas[i], j, aaas[i + j])
-            ans_total += (i+1)*(n-j)
+            sum_s_list.append(['i', 'j'])
 
-print(ans_total)
+            # 考え違えをしてた。1≤L≤R≤Nを満たす整数 (L,R)の組すべてに対するf(L,R)の和を求めてください。
+            # 現在の式は、2つしか足せないうえに、ていぎもちがーう！かなP
+
+print(ans_total)'''
 
 # === improvement ===
