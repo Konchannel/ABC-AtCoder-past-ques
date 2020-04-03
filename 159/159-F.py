@@ -19,29 +19,38 @@ tried-01:
 improvement:
 """
 
-# === tried-01 ===
-import itertools
+# === improvement ===
+n, s = map(int, input().split())
+a = list(map(int, input().split()))
+c = [0] * (s + 1)
+ans = 0
+mod = 998244353
+for i in range(n):
+    c_ = c.copy()
+    if a[i] <= s:
+        for j in range(a[i], s + 1):
+            c[j] += c_[j - a[i]]
+        c[a[i]] += i + 1
+    ans += c[s]
+    ans %= mod
+
+print(ans)
+
+# === improvement-02 ===
+import numpy as np
 
 n, s = map(int, input().split())
-aaas = list(map(int, input().split()))
-sum_s_list = []
+a = list(map(int, input().split()))
+mod = 998244353
 
-for i in range(1, n+1):
-    for j in itertools.combinations(aaas, i):
-        if sum(j) == s:
-            print(j)
-'''
+res = 0
+dp = np.zeros(s + 1, dtype=int)
 
 for i in range(n):
-    for j in range(1, n-i):
-        if aaas[i] + aaas[i+j] == s:
-            # 何回使われるかの計算
-            # print(i, aaas[i], j, aaas[i + j])
-            sum_s_list.append(['i', 'j'])
+    dp[0] += 1
+    dp[a[i]:] += dp[:-a[i]].copy()
+    dp %= mod
+    res += dp[s]
+    res %= mod
 
-            # 考え違えをしてた。1≤L≤R≤Nを満たす整数 (L,R)の組すべてに対するf(L,R)の和を求めてください。
-            # 現在の式は、2つしか足せないうえに、ていぎもちがーう！かなP
-
-print(ans_total)'''
-
-# === improvement ===
+print(res)
