@@ -14,6 +14,7 @@ Aiは相異なる
 tried-01:
 
 improvement:
+複数行を一気に読み込む。
 """
 
 # === tried-01 ===
@@ -31,3 +32,8 @@ if over4m_count >= m:
     print('Yes')
 else:
     print('No')
+
+# === improvement ===
+N, M, *A = map(int, open(0).read().split())
+S=sum(A)/(4*M)
+print("YNeos"[not(sum(a >= S for a in A) >= M)::2])
