@@ -14,7 +14,10 @@ Aiは相異なる
 tried-01:
 
 improvement:
-複数行を一気に読み込む。
+複数行を一気に読み込むopen(0)、
+Yes or Noを表示する際によくある"YNeos"[bool::2]の形。
+foreachでリスト全体に得票数が総投票数の1/4M以上な商品かどうか判別し、boolのListをsumすることで
+得票数が総投票数の1/4M以上の商品数がM以上あるならYes、っていう判別の仕方がエモい。
 """
 
 # === tried-01 ===
@@ -35,5 +38,5 @@ else:
 
 # === improvement ===
 N, M, *A = map(int, open(0).read().split())
-S=sum(A)/(4*M)
+S = sum(A) / (4*M)
 print("YNeos"[not(sum(a >= S for a in A) >= M)::2])
