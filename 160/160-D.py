@@ -15,6 +15,9 @@ X+1<Y
 入力はすべて整数である。
 ===================
 improvement:
+どこかからどこかまで、行けないルートは1つもない。
+それを利用して、iからjまでのルート全通りで、
+通常ルートと、短縮ルートを使ったルートのうち、短いほうをカウントしている。
 """
 # === improvement ===
 
@@ -23,6 +26,7 @@ k = [0]*n
 for i in range(1, n):
     for j in range(1, n-i+1):
         t = min(j, abs(i-x)+abs(i+j-y)+1)
+        print(i, j, abs(i-x)+abs(i+j-y)+1, t)
         k[t] += 1
 for i in range(1, n):
     print(k[i])
