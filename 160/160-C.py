@@ -14,6 +14,8 @@ i番目の家は、湖の北端から時計回りにAiメートルの位置に�
 tried-01:
 
 improvement:
+A += [A[0]+K]
+の一行を入れることで、処理の際に終端と最初の差も求めている。
 """
 
 # === tried-01 ===
@@ -27,8 +29,8 @@ def max_distance_homes(homes):
         distance = homes[i + 1] - homes[i]
         if max_distance < distance:
             max_distance = distance
-    # 終端と最初の差を求める。どっちルートのほうが短いか。
-    distance = min(homes[-1] - homes[0], k + homes[0] - homes[-1])
+    # 終端と最初の差を求める。
+    distance = k + homes[0] - homes[-1]
     if max_distance < distance:
         max_distance = distance
     return max_distance
@@ -36,4 +38,9 @@ def max_distance_homes(homes):
 
 print(k - max_distance_homes(home_positions))
 
+
 # === improvement ===
+K, N = map(int, input().split())
+A = list(map(int, input().split()))
+A += [A[0]+K]
+print(K-max(A[i+1]-A[i] for i in range(N)))
