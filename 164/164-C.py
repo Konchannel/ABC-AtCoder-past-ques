@@ -13,7 +13,10 @@ Siは英小文字のみからなり、長さは1以上10以下
 tried-01:
 
 improvement:
-シンプル。
+シンプル。でも値を扱いづらくしている気がする。
+
+improbement-02:
+これなら読みやすいかな
 """
 
 # === tried-01 ===
@@ -27,3 +30,7 @@ print(len(sets))
 
 # === improvement ===
 print(len(set(open(0)))-1)
+
+# === improbement-02 ===
+prizes = set(open(0).read())
+print(len(prizes) - 1)
