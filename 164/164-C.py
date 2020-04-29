@@ -13,6 +13,7 @@ Siは英小文字のみからなり、長さは1以上10以下
 tried-01:
 
 improvement:
+シンプル。
 """
 
 # === tried-01 ===
@@ -25,3 +26,4 @@ for i in range(n):
 print(len(sets))
 
 # === improvement ===
+print(len(set(open(0)))-1)
