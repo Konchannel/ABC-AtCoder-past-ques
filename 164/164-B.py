@@ -26,11 +26,9 @@ a, b, c, d = map(int, input().split())
 print('Yes' if a/d+int(bool(a % d)) >= c/b+int(bool(c % b)) else 'No')
 
 # === improvement ===
-a, b, c, d = map(int, input().split())
 print('Yes' if bool(int(a/d + bool(a % d)) >= int(c/b + bool(c % b))) else 'No')
 
 # === improvement-02 ===
 import math
 
-a, b, c, d = map(int, input().split())
 print('Yes' if math.ceil(a/d) >= math.ceil(c/b) else 'No')
