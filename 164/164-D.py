@@ -21,3 +21,15 @@ improvement:
 
 
 # === improvement ===
+s = input().strip()
+x = remain = 0
+remains = [0] * 2019
+k = 1
+for d in map(int, list(s[::-1])):
+    x = d * k + remain
+    remain = x % 2019
+    k = (10 * k) % 2019
+    remains[remain] += 1
+
+print(sum([(remain * (remain - 1)) // 2 for remain in remains]) + remains[0])
+
