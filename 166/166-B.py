@@ -14,8 +14,11 @@
 1≤Ai,1<⋯<Ai,di≤N
 ===================
 tried-01:
+set型.add()は、1つの値しか追加できないので、foreachでひとつひとつ取得した。
 
 improvement:
+a |= b を用いて、和集合を代入した。これにより、listをsetに追加することが出来る。
+(a |= b は a = a | b と同じ)
 """
 
 # === tried-01 ===
@@ -30,3 +33,10 @@ for i in range(k):
 print(n - len(have_treats))
 
 # === improvement ===
+N, K = list(map(int, input().split()))
+
+r = set()
+for i in range(K):
+    input()
+    r |= set(map(int, input().split()))
+print(N - len(r))
