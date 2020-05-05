@@ -22,18 +22,31 @@ improvement:
 """
 
 # === tried-01 ===
-mounten_num, bridge_num = map(int, input().split())
-mounten_higests = [0] + list(map(int, input().split()))
-not_bad_mountens = ['x'] + ['o'] * mounten_num
+mountein_num, bridge_num = map(int, input().split())
+mountein_higests = [0] + list(map(int, input().split()))
+not_bad_mounteins = ['x'] + ['o'] * mountein_num
 
 # inputをさばく. 橋の架かっている展望台のうち、低いほうはgood_mountenではない
 for i in range(bridge_num):
     a, b = map(int, input().split())
-    if mounten_higests[a] <= mounten_higests[b]:
-        not_bad_mountens[a] = 'x'
-    if mounten_higests[a] >= mounten_higests[b]:
-        not_bad_mountens[b] = 'x'
+    if mountein_higests[a] <= mountein_higests[b]:
+        not_bad_mounteins[a] = 'x'
+    if mountein_higests[a] >= mountein_higests[b]:
+        not_bad_mounteins[b] = 'x'
 
-print(not_bad_mountens.count('o'))
+print(not_bad_mounteins.count('o'))
 
 # === improvement ===
+N, M, *I = map(int, open(0).read().split())
+H, AB = [0] + I[:N], I[N:]
+
+memo = [False] + [True] * N
+for a, b in zip(*[iter(AB)] * 2):
+    if H[a] < H[b]:
+        memo[a] = False
+    elif H[b] < H[a]:
+        memo[b] = False
+    else:
+        memo[a] = memo[b] = False
+
+print(sum(memo))
