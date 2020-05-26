@@ -14,6 +14,18 @@ Sは小文字アルファベットのみからなる。
 tried-01:
 
 improvement:
+n = sum(s.count(chr(x)) & 1 for x in range(97, 123)) の部分で存在するアルファベット種類をカウント。
+print(m**2 if not n else n-1+(m-n+1)**2)　のうち
+if not n　で
+　①2つ以上存在するアルファベットがない（ダブりがない）場合
+　→　 m**2
+　　　　文字数の2乗を出力
+　②2つ以上存在するアルファベットがある場合
+　→　 n-1+(m-n+1)**2
+    　→　 (m-n+1)**2
+    　　　　ダブりがないアルファベット1つを核に使って長い回文を1つ作る
+    　→　 n-1
+    　　　　ダブりのアルファベット群から核に使った1つを除いて加える（1の2乗は1と変わらないので2乗しない）
 """
 
 # === tried-01 ===
@@ -46,3 +58,10 @@ else:
 print(result)
 
 # === improvement ===
+s = input()
+n = sum(s.count(chr(x)) & 1 for x in range(97, 123))
+m = len(s)
+print(m**2 if not n else n-1+(m-n+1)**2)
+
+print(n, m)
+print(list(s.count(chr(x)) & 1 for x in range(97, 123)))
