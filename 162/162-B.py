@@ -20,6 +20,19 @@ improvement:
 1番に動くこと、2番に速いこと、3番にキレイなこと、なんです。
 """
 
+# === tried-01 ===
+
+n = int(input())
+
+
+def souwa(n):
+    syo, jyoyo = divmod(n, 2)
+    return (n + 1) * syo + (n + 1) // 2 * jyoyo
+
+
+print(souwa(n) - souwa(n//3)*3 - souwa(n//5)*5 + souwa(n//15)*15)
+
+
 # === improvement ===
 n = int(input())
 print(sum(i for i in range(n+1) if i % 3 and i % 5))
