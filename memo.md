@@ -28,6 +28,7 @@ import random
 ### ランダムなn文字の文字列
 123~90abc~XYZのstrを作り、そこからランダムに1つ取り出す。それをn回繰り返す。
 
-import random, string
+import random
+import string
 
  - ''.join(random.choices(string.ascii_letters + string.digits, k=n))
